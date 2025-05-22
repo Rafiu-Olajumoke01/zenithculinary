@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
 import galleryImages from '../../data/galleryImages';
 
 export default function Gallery({ limit }) {
@@ -10,6 +10,8 @@ export default function Gallery({ limit }) {
   const [photoIndex, setPhotoIndex] = useState(0);
 
   const imagesToShow = limit ? galleryImages.slice(0, limit) : galleryImages;
+
+  const slides = galleryImages.map((src) => ({ src }));
 
   const handleImageClick = (index) => {
     setPhotoIndex(index);
@@ -54,20 +56,11 @@ export default function Gallery({ limit }) {
 
       {isOpen && (
         <Lightbox
-          mainSrc={galleryImages[photoIndex]}
-          nextSrc={galleryImages[(photoIndex + 1) % galleryImages.length]}
-          prevSrc={
-            galleryImages[
-              (photoIndex + galleryImages.length - 1) % galleryImages.length
-            ]
-          }
-          onCloseRequest={() => setIsOpen(false)}
-          onMovePrevRequest={() =>
-            setPhotoIndex((photoIndex + galleryImages.length - 1) % galleryImages.length)
-          }
-          onMoveNextRequest={() =>
-            setPhotoIndex((photoIndex + 1) % galleryImages.length)
-          }
+          open={isOpen}
+          close={() => setIsOpen(false)}
+          slides={slides}
+          index={photoIndex}
+          on={{ view: ({ index }) => setPhotoIndex(index) }}
         />
       )}
     </section>
