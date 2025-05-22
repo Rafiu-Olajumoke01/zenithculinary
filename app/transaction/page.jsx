@@ -4,7 +4,7 @@ import Link from 'next/link';
 import featuredCourses from '../data/courses';
 
 const TransactionPage = () => {
-    // Course selection state
+
     const [selectedCourse, setSelectedCourse] = useState(null);
     const [currentStep, setCurrentStep] = useState(1);
     const [formData, setFormData] = useState({
@@ -24,9 +24,6 @@ const TransactionPage = () => {
         agreedToTerms: false,
     });
 
-    // Use the imported featuredCourses data directly
-
-    // Handle form input changes
     const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
         setFormData({
@@ -35,14 +32,14 @@ const TransactionPage = () => {
         });
     };
 
-    // Handle course selection
+
     const handleCourseSelect = (course) => {
         setSelectedCourse(course);
         setCurrentStep(2);
         window.scrollTo(0, 0);
     };
 
-    // Navigate to the next step
+  
     const handleNextStep = () => {
         setCurrentStep(currentStep + 1);
         window.scrollTo(0, 0);
@@ -60,16 +57,14 @@ const TransactionPage = () => {
         window.scrollTo(0, 0);
     };
 
-    // Calculate total price - Updated to handle amount field
+   
     const calculateTotal = () => {
         if (!selectedCourse) return 0;
-        // Check for amount field first, then fallback to price or cost
         const price = selectedCourse.amount || selectedCourse.price || selectedCourse.cost || 0;
         const discount = selectedCourse.discount || selectedCourse.discountAmount || 0;
         return price - discount;
     };
 
-    // Get the original price - Updated to handle amount field
     const getOriginalPrice = () => {
         if (!selectedCourse) return 0;
         return selectedCourse.amount || selectedCourse.price || selectedCourse.cost || 0;
@@ -261,7 +256,6 @@ const TransactionPage = () => {
                         required
                     />
                     <div className="flex space-x-2">
-                        {/* Using placeholder images instead of potentially missing SVGs */}
                         <div className="h-6 w-8 bg-blue-600 rounded text-white text-xs flex items-center justify-center">VISA</div>
                         <div className="h-6 w-8 bg-red-600 rounded text-white text-xs flex items-center justify-center">MC</div>
                         <div className="h-6 w-8 bg-green-600 rounded text-white text-xs flex items-center justify-center">AE</div>
@@ -463,7 +457,6 @@ const TransactionPage = () => {
         </div>
     );
 
-    // Progress steps
     const renderProgressSteps = () => {
         const steps = [
             { number: 1, title: "Course" },
