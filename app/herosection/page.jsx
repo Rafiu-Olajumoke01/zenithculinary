@@ -13,7 +13,7 @@ export default function HeroSection() {
 
             <div className="relative z-10 text-center px-4 max-w-4xl text-white pt-12">
                 {/* Heading on a single line */}
-                <h1 className="text-3xl md:text-6xl font-extrabold uppercase tracking-wide mb-6 whitespace-nowrap">
+                <h1 className="text-base sm:text-lg md:text-4xl lg:text-6xl font-extrabold uppercase tracking-wide mb-6 whitespace-nowrap">
                     <span className="text-white">Welcome to </span>
                     <span className="text-green-500">Culinary Hub</span>
                 </h1>
