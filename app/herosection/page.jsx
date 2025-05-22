@@ -23,7 +23,7 @@ export default function HeroSection() {
                 </p>
 
                 <Link
-                    href="/enroll"
+                    href="/transaction"
                     className="inline-block bg-green-600 px-8 py-3 uppercase tracking-widest font-semibold text-white text-sm md:text-base transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-400"
                     style={{ borderRadius: '0px' }}
                 >
